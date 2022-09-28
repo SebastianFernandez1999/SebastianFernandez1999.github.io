@@ -1,0 +1,34 @@
+.plot{
+  height: "100%";
+}
+
+.container{
+  display:flex; 
+  flex-direction:row;
+}
+
+.metricsEmailRow {
+  display:flex; 
+  flex-direction:row;
+
+}
+
+.updateButton{
+margin-left: 70%;
+
+}
+
+.emailTextBox{
+  margin-left: 20%;
+}
+
+.emailBox{
+  padding: 50px 0;
+  display: flex;
+justify-content: center;
+}
+
+.emailSubscription{
+  margin-left: 7%;
+}
+

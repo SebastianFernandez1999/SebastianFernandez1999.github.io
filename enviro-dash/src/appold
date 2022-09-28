@@ -1,0 +1,162 @@
+
+import React from "react";
+import axios from "axios";
+
+import Graph from "./components/Graph.js";
+import Sidebar from "./components/Sidebar.js";
+import Box from '@mui/material/Box';
+import Input from '@mui/material/Input';
+import FilledInput from '@mui/material/FilledInput';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import InputLabel from '@mui/material/InputLabel';
+import InputAdornment from '@mui/material/InputAdornment';
+import FormHelperText from '@mui/material/FormHelperText';
+import FormControl from '@mui/material/FormControl';
+import TextField from '@mui/material/TextField';
+import Grid from '@mui/material/Grid';
+import { Button } from "@mui/material";
+
+
+
+
+function App(props) {
+
+  // List = () => {
+  //   axios.get(`threshold`, {
+  //     reponseType: "json",
+  //   }).then(function (response) { console.log(response.data) 
+  // });
+  // }
+ const UpdateThresholds = () => {
+
+      axios.put('threshold/update/', {
+        device_name: "will_pi",
+        light_lower: 20,
+        light_upper: 90,
+        temperature_lower: 15,
+        temperature_upper: 60
+    })
+      .then(res => {
+        console.log(res);
+        console.log(res.data);
+    });
+  }
+
+  return (
+    <div className="container">
+      {/* {props.data.map((row)=> (
+        <p key  = "{row.information.timestamp}">[{row.information.timestamp}:{row.temperature.value}]</p>
+        ))} */}
+      <div className="SideBar">
+        <Sidebar />
+      </div>
+      <Graph
+        data={props.data}
+        timestamps={props.data.map((row) =>
+        (row.data.information.month + "/" +
+          row.data.information.day + "/" +
+          row.data.information.year + " (" +
+          row.data.information.hour + ":" +
+          row.data.information.minute + ":" +
+          row.data.information.seconds + ")"))}
+        temperature_vals={props.data.map((row) =>
+          (row.data.temperature.value))}
+        light_vals={props.data.map((row) =>
+          (row.data.light.value))} />
+
+      <Box sx={{ flexGrow: 1 }} display="flex" justifyContent="center" alignItems="center">
+
+        <Grid container container spacing={2} columns={16}>
+
+          <Grid item xs={8}>
+            <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
+              <OutlinedInput
+                id="outlined-adornment-weight"
+
+                endAdornment={<InputAdornment position="end">&#8457;</InputAdornment>}
+                aria-describedby="outlined-weight-helper-text"
+                inputProps={{
+                  'aria-label': 'weight',
+                }}
+              />
+              <FormHelperText id="outlined-weight-helper-text">Temperature Threshold Upper</FormHelperText>
+            </FormControl>
+
+          </Grid>
+
+          <Grid item xs={8}>
+            <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
+              <OutlinedInput
+                id="outlined-adornment-weight"
+
+                endAdornment={<InputAdornment position="end">&#8457;</InputAdornment>}
+                aria-describedby="outlined-weight-helper-text"
+                inputProps={{
+                  'aria-label': 'weight',
+                }}
+              />
+              <FormHelperText id="outlined-weight-helper-text">Temperature Threshold Lower</FormHelperText>
+            </FormControl>
+          </Grid>
+
+          <Grid item xs={8}>
+            <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
+              <OutlinedInput
+                id="outlined-adornment-weight"
+
+                endAdornment={<InputAdornment position="end">lux</InputAdornment>}
+                aria-describedby="outlined-weight-helper-text"
+                inputProps={{
+                  'aria-label': 'weight',
+                }}
+              />
+              <FormHelperText id="outlined-weight-helper-text">Light Threshold Upper</FormHelperText>
+            </FormControl>
+          </Grid>
+
+          <Grid item xs={8}>
+            <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
+              <OutlinedInput
+                id="outlined-adornment-weight"
+
+                endAdornment={<InputAdornment position="end">lux</InputAdornment>}
+                aria-describedby="outlined-weight-helper-text"
+                inputProps={{
+                  'aria-label': 'weight',
+                }}
+              />
+              <FormHelperText id="outlined-weight-helper-text">Light Threshold Lower</FormHelperText>
+            </FormControl>
+          </Grid>
+        </Grid>
+
+        <Grid container justify="center">
+          <Button
+            variant="contained"
+            onClick={() => {
+              UpdateThresholds()
+            }}
+          >
+            Save Thresholds
+          </Button>
+        </Grid>
+
+      </Box>
+
+
+
+    </div>
+
+  )
+
+}
+
+
+
+
+
+
+
+
+
+export default App;
