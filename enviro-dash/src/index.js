@@ -9,17 +9,17 @@ var measurements = {};
 var thresholds = {};
 var warnings = {};
 const root = ReactDOM.createRoot(document.getElementById('root'));
-axios.get(`data`).then(response => {
+axios.get(`http://3.95.173.161/data/`).then(response => {
   measurements = response.data;
   return measurements;
 });
- axios.get(`threshold`, {
+ axios.get(`http://3.95.173.161/threshold/`, {
    reponseType: "json",
  }).then(response => {
    thresholds = response.data;
    return thresholds;
  });
- axios.get(`warnings`, {
+ axios.get(`http://3.95.173.161/warnings/`, {
    responseType: "json",
  }).then(response => {
    warnings = response.data;
