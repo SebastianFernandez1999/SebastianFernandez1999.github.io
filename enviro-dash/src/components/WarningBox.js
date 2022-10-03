@@ -4,25 +4,22 @@ import { CDropdown, CDropdownItem, CDropdownMenu, CDropdownToggle } from '@coreu
 function WarningBox(props) {
     console.log(props.warnings);
     function isEmpty(data) {
-        if (data === undefined) {
-            
+        if (data === undefined){
+            console.log("undefined") 
             return true;
-        }
-
-        else {
+        } 
+        else {       
+            if (data.length === 0){
+                console.log("0")
+                return true;
+            } 
             
-            if (data.length === 0) return true;
             else return false;
-
-
         }
     }
 
-    if (isEmpty(props.warnings)) {
-        return (
-            <div></div>
-        )
-    }
+    if (isEmpty(props.warnings)) return (<div></div>)
+
     else {
         return (
             //This should actually be a scrollable window
@@ -37,8 +34,9 @@ function WarningBox(props) {
                         {/* {props.warnings[index].information.hour}/ {props.warnings[index].information.minute}  */}
                     </CDropdownItem>)} 
                     </CDropdownMenu>
-
                 </CDropdown>
+
+              
             </div>
         )
     }

@@ -3,6 +3,7 @@ import { CDropdown,CDropdownToggle,CDropdownMenu,CDropdownItem  } from '@coreui/
 
 
 function TimeFilterMenu(props){
+    console.log(props.currTime);
     return(
         <div style={{ display: "flex", justifyContent: "right", alignItems: "right" }} className = "timemenu">
             <CDropdown>

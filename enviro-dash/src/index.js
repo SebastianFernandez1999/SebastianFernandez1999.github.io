@@ -10,12 +10,14 @@ var thresholds = {};
 var warnings = {};
 const root = ReactDOM.createRoot(document.getElementById('root'));
 axios.get(`http://3.95.173.161/data/`).then(response => {
+  console.log(response.data);
   measurements = response.data;
   return measurements;
 });
  axios.get(`http://3.95.173.161/threshold/`, {
    reponseType: "json",
  }).then(response => {
+  console.log(response.data);
    thresholds = response.data;
    return thresholds;
  });
@@ -26,7 +28,7 @@ axios.get(`http://3.95.173.161/data/`).then(response => {
    return warnings;
  })
 
-//Setting a timeout so that axios is actually able to grab the data
+//Setting a timeout so that axios is actually able to grab the data- need some sort of await thing
 setTimeout(() => root.render(
 
   <App
@@ -35,7 +37,7 @@ setTimeout(() => root.render(
     warnings = {warnings}
   />
 
-), 1000);
+), 5000);
 
 
 

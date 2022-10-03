@@ -10,9 +10,10 @@ import "./App.css"
 
 class App extends React.Component {
   constructor(props) {
-
+    
     super(props);
     this.handleDeviceChange = this.handleDeviceChange.bind(this);
+    console.log(this.props.data);
     this.state = {
       devices: [],
       currentDevice: this.props.thresholds[0].device_name,

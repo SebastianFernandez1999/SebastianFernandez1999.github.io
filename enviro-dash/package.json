@@ -4,6 +4,7 @@
   "private": true,
   "proxy": "http://localhost:8000/",
   "dependencies": {
+    "@coreui/react": "^4.4.0",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "@mui/material": "^5.10.5",
