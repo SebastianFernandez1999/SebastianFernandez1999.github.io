@@ -30,12 +30,16 @@ axios.get(`https://3.215.139.186/data/`).then(response => {
 
 //Setting a timeout so that axios is actually able to grab the data- need some sort of await thing
 setTimeout(() => root.render(
-
+  <div>
+  <div>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+  </div>
   <App
     data={measurements}
     thresholds={thresholds}
     warnings = {warnings}
   />
+  </div>
 
 ), 5000);
 
