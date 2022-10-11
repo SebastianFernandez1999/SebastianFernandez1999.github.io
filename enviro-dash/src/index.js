@@ -14,14 +14,14 @@ axios.get(`https://3.215.139.186/data`).then(response => {
   measurements = response.data;
   return measurements;
 });
- axios.get(`http://3.215.139.186/threshold`, {
+ axios.get(`https://3.215.139.186/threshold`, {
    reponseType: "json",
  }).then(response => {
   console.log(response.data);
    thresholds = response.data;
    return thresholds;
  });
- axios.get(`http://3.215.139.186/warnings`, {
+ axios.get(`https://3.215.139.186/warnings`, {
    responseType: "json",
  }).then(response => {
    warnings = response.data;
