@@ -9,19 +9,19 @@ var measurements = {};
 var thresholds = {};
 var warnings = {};
 const root = ReactDOM.createRoot(document.getElementById('root'));
-axios.get(`https://3.215.139.186/data`).then(response => {
+axios.get(`https://capybaraterrarium.info/data`).then(response => {
   console.log(response.data);
   measurements = response.data;
   return measurements;
 });
- axios.get(`https://3.215.139.186/threshold`, {
+ axios.get(`https://capybaraterrarium.info/threshold`, {
    reponseType: "json",
  }).then(response => {
   console.log(response.data);
    thresholds = response.data;
    return thresholds;
  });
- axios.get(`https://3.215.139.186/warnings`, {
+ axios.get(`https://capybaraterrarium.info/warnings`, {
    responseType: "json",
  }).then(response => {
    warnings = response.data;
